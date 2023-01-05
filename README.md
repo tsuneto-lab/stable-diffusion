@@ -1,3 +1,17 @@
+# !!FORKED from CompVis and MODIFIED!!
+
+TODO: Make it a template for different models. Pre-download what txt2img.py downloads. Below command would download them everytime.
+
+```bash
+docker build . -t tsuneto-lab/stable-diffusion
+docker run --rm --gpus all \
+  -v $HOME/outputs:/app/outputs -v $HOME/models:/app/models/ldm/stable-diffusion-v1 \
+  tsuneto-lab/stable-diffusion python3 scripts/txt2img.py --n_samples 1 --ckpt /app/models/ldm/stable-diffusion-v1/v1-5-pruned.ckpt \
+  --prompt "a photograph of an astronaut riding a horse"
+```
+
+FYI, ansible playbook for nvidia-docker setup in wsl: https://github.com/tsuneto-lab/wsl-setup
+
 # Stable Diffusion
 *Stable Diffusion was made possible thanks to a collaboration with [Stability AI](https://stability.ai/) and [Runway](https://runwayml.com/) and builds upon our previous work:*
 
