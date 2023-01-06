@@ -16,3 +16,6 @@ RUN pip3 install -r requirements-remote.txt
 # copy rest of the project and install (so local change would affect only this layer)
 COPY . /app
 RUN pip3 install -r requirements.txt
+
+# cache transformer pretrained models
+RUN python3 scripts/txt2img_prefetch.py

@@ -1,7 +1,5 @@
 # !!FORKED from CompVis and MODIFIED!!
 
-TODO: Make it a template for different models. Pre-download what txt2img.py downloads. Below command would download them everytime.
-
 ```bash
 docker build . -t tsuneto-lab/stable-diffusion
 docker run --rm --gpus all \
