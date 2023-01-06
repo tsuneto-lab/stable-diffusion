@@ -8,6 +8,11 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt update && apt install -y --no-install-recommends libopencv-dev git python3 python3-pip \
   && rm -rf /var/lib/apt/lists/*
 
-COPY . /app
+# Install remote packages
+COPY ./requirements-remote.txt /app/requirements-remote.txt
 WORKDIR /app
+RUN pip3 install -r requirements-remote.txt
+
+# copy rest of the project and install (so local change would affect only this layer)
+COPY . /app
 RUN pip3 install -r requirements.txt
