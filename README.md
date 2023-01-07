@@ -1,6 +1,6 @@
-# !!FORKED from CompVis and MODIFIED!!
+# !!FORKED from [CompVis/stable-diffusion](https://github.com/CompVis/stable-diffusion) and MODIFIED!!
 
-Requires nvidia-docker setup.
+Requires nvidia-docker setup.  
 FYI, ansible playbook for setting up nvidia-docker in WSL2: https://github.com/tsuneto-lab/wsl-setup
 
 ```bash
