@@ -1,14 +1,27 @@
 # !!FORKED from CompVis and MODIFIED!!
 
+Requires nvidia-docker setup.
+FYI, ansible playbook for setting up nvidia-docker in WSL2: https://github.com/tsuneto-lab/wsl-setup
+
 ```bash
+# clone this repo and cd into it
+git clone https://github.com/tsuneto-lab/stable-diffusion.git
+cd stable-diffusion
+
+# build the image
 docker build . -t tsuneto-lab/stable-diffusion
+
+# put a model (sd-v1-4.ckpt here) under $HOME/models/ and run
 docker run --rm --gpus all \
   -v $HOME/outputs:/app/outputs -v $HOME/models:/app/models/ldm/stable-diffusion-v1 \
-  tsuneto-lab/stable-diffusion python3 scripts/txt2img.py --n_samples 1 --ckpt /app/models/ldm/stable-diffusion-v1/v1-5-pruned.ckpt \
+  tsuneto-lab/stable-diffusion python3 scripts/txt2img.py --n_samples 1 \
+  --ckpt /app/models/ldm/stable-diffusion-v1/sd-v1-4.ckpt \
   --prompt "a photograph of an astronaut riding a horse"
-```
 
-FYI, ansible playbook for nvidia-docker setup in wsl: https://github.com/tsuneto-lab/wsl-setup
+# it would be convenient to access outputs dir from windows explorer (if wsl)
+# as well as simply serve the directory:
+# python3 -m http.server 8080 --bind 0.0.0.0 --directory $HOME/outputs
+```
 
 # Stable Diffusion
 *Stable Diffusion was made possible thanks to a collaboration with [Stability AI](https://stability.ai/) and [Runway](https://runwayml.com/) and builds upon our previous work:*
